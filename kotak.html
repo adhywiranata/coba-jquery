@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <title>ini judul</title>
+    <style>
+      @keyframes goyang {
+        0% {
+          transform: rotate(0deg);
+        }
+        50% {
+          transform: rotate(45deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+
+      @keyframes tabrak {
+        0% {
+          transform: rotate(0deg);
+        }
+        50% {
+          transform: rotate(45deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+
+      #kotak {
+        animation-name: goyang;
+        animation-duration: 1s;
+        transition: 0.5s;
+        animation-iteration-count: infinite;
+      }
+
+      #kotak2 {
+        position: absolute;
+        right: 0;
+        top: 20;
+        height: 200px;
+        animation-name: tabrak;
+        animation-duration: 1s;
+        transition: 0.5s;
+        animation-iteration-count: infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <img id="gedung" src="https://smkn1kaidipang.sch.id/wp-content/uploads/2016/12/icon-gedung.png" style="height: 200px; position: absolute; bottom: 0; right: 0" />
+    <button id="naik" style="position: fixed; bottom: 0; left: 0; padding: 200px">NAIK</button>
+    <button id="turun" style="position: fixed; bottom: 0; left: 300; padding: 200px">TURUN</button>
+    <div style="position: relative; overflow: hidden; width: 100%; background: skyblue; height: 500px">
+      <img src="https://l.imgt.es/resource-preview-imgs/6e738344-5933-4447-b8c6-9bc106f9674a%2Fflappybird_topic.crop_600x449_0%252C16.preview.png?profile=max500x190" id="kotak" />
+      <img src="https://cdn.pixabay.com/photo/2018/08/08/07/40/animal-3591513_960_720.png" id="kotak2" />
+    </div>
+    <script src="jquery.min.js"></script>
+    <script src="kotak-script.js"></script>
+    <script>
+      function jalan() {
+        $("#kotak2").animate({
+          right: "+=100",
+        }, 500, function() {
+          jalan();
+        });
+      }
+
+      jalan();
+
+      function lewat() {
+        $("#gedung").animate({
+          right: "+=100",
+        }, 10, function() {
+          lewat();
+        });
+      }
+
+      lewat();
+    </script>
+  </body>
+</html>
